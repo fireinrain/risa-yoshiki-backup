@@ -11,13 +11,13 @@ def generate_markdown():
                 for root_dir in dirs:
                     print("{}/{}".format(root, root_dir))
                     ndir = root_dir.replace('[', '').replace(']', '').replace('&amp;', '')
-                    f.write(f"- [{ndir}]({'./images/' + ndir + '.md'})\n")
+                    f.write(f"- [{ndir}]({'images/' + ndir + '.md'})\n")
                     with open(os.path.join('./images/' + ndir + '.md'), 'w+') as ff:
                         dir_walk = os.walk(os.path.join(root, root_dir))
                         for droot, ddirs, dfiles in dir_walk:
                             for img_file in dfiles:
                                 print(os.path.join(root, droot, img_file))
-                                ff.write(f"![{img_file}]({'./' + root_dir + os.sep + img_file})\n")
+                                ff.write(f"![{img_file}]({root_dir + os.sep + img_file})\n")
                             print("--------------------------------")
 
 
